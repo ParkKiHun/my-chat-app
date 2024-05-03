@@ -1,112 +1,26 @@
-> The example repository is maintained from a [monorepo](https://github.com/nextauthjs/next-auth/tree/main/apps/examples/nextjs). Pull Requests should be opened against [`nextauthjs/next-auth`](https://github.com/nextauthjs/next-auth).
+## 인증 및 채팅 애플리케이션
 
-<p align="center">
-   <br/>
-   <a href="https://authjs.dev" target="_blank"><img width="150px" src="https://authjs.dev/img/logo-sm.png" /></a>
-   <h3 align="center">NextAuth.js Example App</h3>
-   <p align="center">
-   Open Source. Full Stack. Own Your Data.
-   </p>
-   <p align="center" style="align: center;">
-      <a href="https://npm.im/next-auth">
-        <img alt="npm" src="https://img.shields.io/npm/v/next-auth?color=green&label=next-auth">
-      </a>
-      <a href="https://bundlephobia.com/result?p=next-auth-example">
-        <img src="https://img.shields.io/bundlephobia/minzip/next-auth?label=next-auth" alt="Bundle Size"/>
-      </a>
-      <a href="https://www.npmtrends.com/next-auth">
-        <img src="https://img.shields.io/npm/dm/next-auth?label=next-auth%20downloads" alt="Downloads" />
-      </a>
-      <a href="https://npm.im/next-auth">
-        <img src="https://img.shields.io/badge/npm-TypeScript-blue" alt="TypeScript" />
-      </a>
-   </p>
-</p>
+사용자 인증 및 권한 관리를 Keycloak을 통해 구현하고, Next.js와 NextAuth를 사용하여 인증을 처리하며, React 웹소켓을 사용하여 실시간 채팅 기능을 구현함
 
-## Overview
+## 설치
 
-NextAuth.js is a complete open source authentication solution.
+1. keycloak 설치 및 세팅
+2. 저장소를 클론합니다.
+3. npm install
+4. npm run dev
 
-This is an example application that shows how `next-auth` is applied to a basic Next.js app.
+## 핵심 기능
 
-The deployed version can be found at [`next-auth-example.vercel.app`](https://next-auth-example.vercel.app)
+- 사용자 로그인 및 회원가입 기능
+- 인증된 사용자만 채팅에 참여할 수 있는 채팅방 구현
+- 실시간으로 채팅 메시지 전송 및 수신 기능
 
-### About NextAuth.js
+## 기능 명세
 
-NextAuth.js is an easy to implement, full-stack (client/server) open source authentication library originally designed for [Next.js](https://nextjs.org) and [Serverless](https://vercel.com). Our goal is to [support even more frameworks](https://github.com/nextauthjs/next-auth/issues/2294) in the future.
+- 인증 및 권한 관리: Keycloak을 사용하여 사용자 인증 및 권한 관리를 구현하고, NextAuth를 통해 Next.js 애플리케이션과 연동함
+- 채팅 기능: React 웹소켓을 활용하여 실시간 채팅 기능을 구현함. 채팅방 생성, 메시지 전송, 메시지 수신 기능을 포함함
 
-Go to [next-auth.js.org](https://authjs.dev) for more information and documentation.
+## 기술 스택
 
-> _NextAuth.js is not officially associated with Vercel or Next.js._
-
-## Getting Started
-
-### 1. Clone the repository and install dependencies
-
-```
-git clone https://github.com/nextauthjs/next-auth-example.git
-cd next-auth-example
-npm install
-```
-
-### 2. Configure your local environment
-
-Copy the .env.local.example file in this directory to .env.local (which will be ignored by Git):
-
-```
-cp .env.local.example .env.local
-```
-
-Add details for one or more providers (e.g. Google, Twitter, GitHub, Email, etc).
-
-#### Database
-
-A database is needed to persist user accounts and to support email sign in. However, you can still use NextAuth.js for authentication without a database by using OAuth for authentication. If you do not specify a database, [JSON Web Tokens](https://jwt.io/introduction) will be enabled by default.
-
-You **can** skip configuring a database and come back to it later if you want.
-
-For more information about setting up a database, please check out the following links:
-
-- Docs: [authjs.dev/reference/core/adapters](https://authjs.dev/reference/core/adapters)
-
-### 3. Configure Authentication Providers
-
-1. Review and update options in `auth.ts` as needed.
-
-2. When setting up OAuth, in the developer admin page for each of your OAuth services, you should configure the callback URL to use a callback path of `{server}/api/auth/callback/{provider}`.
-
-e.g. For Google OAuth you would use: `http://localhost:3000/api/auth/callback/google`
-
-A list of configured providers and their callback URLs is available from the endpoint `api/auth/providers`. You can find more information at https://authjs.dev/getting-started/providers/oauth-tutorial
-
-1. You can also choose to specify an SMTP server for passwordless sign in via email.
-
-### 4. Start the application
-
-To run your site locally, use:
-
-```
-npm run dev
-```
-
-To run it in production mode, use:
-
-```
-npm run build
-npm run start
-```
-
-### 5. Preparing for Production
-
-Follow the [Deployment documentation](https://authjs.dev/getting-started/deployment)
-
-## Acknowledgements
-
-<a href="https://vercel.com?utm_source=nextauthjs&utm_campaign=oss">
-<img width="170px" src="https://raw.githubusercontent.com/nextauthjs/next-auth/main/docs/static/img/powered-by-vercel.svg" alt="Powered By Vercel" />
-</a>
-<p align="left">Thanks to Vercel sponsoring this project by allowing it to be deployed for free for the entire NextAuth.js Team</p>
-
-## License
-
-ISC
+- 프론트엔드: Next.js와 React를 사용하여 프론트엔드를 개발함. NextAuth를 사용하여 인증 처리를 구현하고, React 웹소켓을 사용하여 채팅 기능을 구현함
+- 백엔드: Keycloak을 사용하여 사용자 인증 및 권한 관리를 처리함.
